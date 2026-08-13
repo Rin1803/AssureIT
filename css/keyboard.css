@@ -1,0 +1,235 @@
+.keyboardCont {
+    width: 100%;
+    max-width: 1500px;
+}
+
+.keyboardWrap {
+    width: 100%;
+    margin-top: 40px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 0 15px;
+}
+
+.keyboardLay {
+    width: max-content;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    margin: 0 auto;
+}
+
+.keyboardMain {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.keyboard-row {
+    display: flex;
+    gap: 7px;
+
+    height: 55px;
+}
+
+.function-row {
+    margin-bottom: 12px;
+}
+
+.function-gap {
+    width: 18px;
+    flex-shrink: 0;
+}
+
+.key {
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 7px;
+    background-color: #DADADA;
+    color: #122047;
+    box-shadow: 0 5px 0 #B9B9B9;
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: default;
+    user-select: none;
+    transition:
+        background-color 0.12s ease,
+        color 0.12s ease,
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+.key.pressed {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #122047;
+}
+
+.key.checked {
+    background-color: #046199;
+    color: #dadada;
+    box-shadow: 0 5px 0 #1C3667;
+}
+
+.key.checked.pressed {
+    background-color: #1C3667;
+    color: #dadada;
+    box-shadow: 0 1px 0 #122047;
+}
+
+.backspace {
+    width: 105px;
+}
+
+.tab {
+    width: 90px;
+}
+
+.caps {
+    width: 105px;
+}
+
+.enter {
+    width: 119px;
+}
+
+.shift {
+    width: 135px;
+}
+
+.space {
+    width: 330px;
+}
+
+.navigation-section {
+    width: 179px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navigation-keys {
+    display: grid;
+    grid-template-columns: repeat(3, 55px);
+    grid-template-rows: repeat(2, 55px);
+    gap: 7px;
+    margin-top: 74px;
+}
+
+.arrow-area {
+    display: grid;
+    grid-template-columns: repeat(3, 55px);
+    grid-template-rows: repeat(2, 55px);
+    gap: 7px;
+    margin-top: 73px;
+}
+
+.arrow-area .up {
+    grid-column: 2;
+}
+
+.numpad {
+    width: 241px;
+    display: grid;
+    grid-template-columns: repeat(4, 55px);
+    grid-auto-rows: 55px;
+    gap: 7px;
+    margin-top: 74px;
+}
+
+.num-tall {
+    height: 117px;
+    grid-row: span 2;
+}
+
+.num-zero {
+    width: 117px;
+    grid-column: span 2;
+}
+
+.mouse-test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 45px;
+}
+
+.mouseB {
+    width: 180px;
+    height: 65px;
+    border: none;
+    border-radius: 8px;
+    color: #142957;
+    box-shadow: 0 5px 0 #B9B9B9;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: default;
+    user-select: none;
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.mouseB.active {
+    background-color: #1C3667;
+    color: #dadada;
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #122047;
+}
+
+.mouseB.checked {
+    background-color: #046199;
+    color: #dadada;
+    box-shadow: 0 5px 0 #1C3667;
+}
+
+.mouseB.checked.active {
+    background-color: #1C3667;
+    color: #dadada;
+    box-shadow: 0 1px 0 #122047;
+}
+
+.keyboard-reset {
+    display: block;
+    margin: 35px auto 0;
+}
+
+@media (max-width: 1200px) {
+    .keyboard-wrapper {
+        justify-content: flex-start;
+    }
+
+}
+
+@media (max-width: 760px) {
+    .keyboard-wrapper {
+        margin-top: 30px;
+    }
+
+    .mouseB {
+        width: 150px;
+        height: 58px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .mouse-test {
+        gap: 12px;
+    }
+
+    .mouseB {
+        width: 130px;
+        height: 52px;
+        font-size: 12px;
+    }
+
+}

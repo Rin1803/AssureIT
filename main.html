@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>AssureIT Hardware Testing</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/pixel.css">
+        <link rel="stylesheet" href="css/keyboard.css">
+        <link rel="stylesheet" href="css/health.css">
+        <link rel="stylesheet" href="css/media.css">
+    </head>
+    <body>
+        <header class="header">
+            <img src="images/logo2.png" alt="AssureIT logo" class="header-logo">
+            <button type="button" id="logoutb" class="logout-button">
+                ←
+            </button>
+        </header>
+
+        <main>
+            <section class="land">
+                <div class="landOver"></div>
+                <div class="landCont">
+                    <h1> Hardware Testing
+                        <span>Made Simple</span>
+                    </h1>
+                    <p>
+                        A centralized platform for performing User Acceptance
+                        Testing on company devices before deployment.
+                    </p>
+                </div>
+            </section>
+            
+            <section class="testSec snap-section" id="screenC">
+                <h2 class="testTitle">SCREEN CHECK</h2>
+                <div class="testCont">
+                    <h3 class="subtitle">Dead Pixel Test</h3>
+                    <p class="testDesc">
+                        Click Start to enter full-screen mode. Use the Arrow Keys or
+                        Spacebar to cycle through solid colors and inspect the display
+                        for dead or stuck pixels. Press Esc to exit.
+                    </p>
+
+                    <button type="button"
+                        id="pixelB"
+                        class="testB">
+                        Start Test
+                    </button>
+
+                    <div id="pixelColors"
+                        class="colorOps">
+                    </div>
+                </div>
+            </section>
+
+        <section class="testSec snap-section" id="keyboardC">
+            <h2 class="testTitle"> KEYBOARD CHECK </h2>
+
+            <div class="testCont keyboardCont">
+                <h3 class="subtitle"> Keyboard and Trackpad Test </h3>
+                <p class="testDesc">
+                    Press each key on your keyboard and use the touchpad to verify
+                    that all inputs register correctly. System keys, such as the
+                    Windows key, may still trigger operating system functions.
+                </p>
+
+                <div class="keyboardWrap">
+                    <div class="keyboardLay">
+                        <div class="keyboardMain" id="keyboard">
+                            <div class="keyboard-row function-row">
+                                <button class="key" data-key="Escape"> Esc </button>
+
+                                <div class="function-gap"></div>
+                                <button class="key" data-key="F1">F1</button>
+                                <button class="key" data-key="F2">F2</button>
+                                <button class="key" data-key="F3">F3</button>
+                                <button class="key" data-key="F4">F4</button>
+
+                                <div class="function-gap"></div>
+                                <button class="key" data-key="F5">F5</button>
+                                <button class="key" data-key="F6">F6</button>
+                                <button class="key" data-key="F7">F7</button>
+                                <button class="key" data-key="F8">F8</button>
+
+                                <div class="function-gap"></div>
+                                <button class="key" data-key="F9">F9</button>
+                                <button class="key" data-key="F10">F10</button>
+                                <button class="key" data-key="F11">F11</button>
+                                <button class="key" data-key="F12">F12</button>
+                            </div>
+
+                            <div class="keyboard-row">
+                                <button class="key" data-key="Backquote">~</button>
+                                <button class="key" data-key="Digit1">1</button>
+                                <button class="key" data-key="Digit2">2</button>
+                                <button class="key" data-key="Digit3">3</button>
+                                <button class="key" data-key="Digit4">4</button>
+                                <button class="key" data-key="Digit5">5</button>
+                                <button class="key" data-key="Digit6">6</button>
+                                <button class="key" data-key="Digit7">7</button>
+                                <button class="key" data-key="Digit8">8</button>
+                                <button class="key" data-key="Digit9">9</button>
+                                <button class="key" data-key="Digit0">0</button>
+                                <button class="key" data-key="Minus">-</button>
+                                <button class="key" data-key="Equal">=</button>
+
+                                <button class="key backspace" data-key="Backspace"> Backspace </button>
+                            </div>
+
+                            <div class="keyboard-row">
+                                <button class="key tab" data-key="Tab"> Tab </button>
+                                <button class="key" data-key="KeyQ">Q</button>
+                                <button class="key" data-key="KeyW">W</button>
+                                <button class="key" data-key="KeyE">E</button>
+                                <button class="key" data-key="KeyR">R</button>
+                                <button class="key" data-key="KeyT">T</button>
+                                <button class="key" data-key="KeyY">Y</button>
+                                <button class="key" data-key="KeyU">U</button>
+                                <button class="key" data-key="KeyI">I</button>
+                                <button class="key" data-key="KeyO">O</button>
+                                <button class="key" data-key="KeyP">P</button>
+                                <button class="key" data-key="BracketLeft">[</button>
+                                <button class="key" data-key="BracketRight">]</button>
+                                <button class="key" data-key="Backslash">\</button>
+                            </div>
+
+                            <div class="keyboard-row">
+                                <button class="key caps" data-key="CapsLock"> Caps Lock </button>
+                                <button class="key" data-key="KeyA">A</button>
+                                <button class="key" data-key="KeyS">S</button>
+                                <button class="key" data-key="KeyD">D</button>
+                                <button class="key" data-key="KeyF">F</button>
+                                <button class="key" data-key="KeyG">G</button>
+                                <button class="key" data-key="KeyH">H</button>
+                                <button class="key" data-key="KeyJ">J</button>
+                                <button class="key" data-key="KeyK">K</button>
+                                <button class="key" data-key="KeyL">L</button>
+                                <button class="key" data-key="Semicolon">;</button>
+                                <button class="key" data-key="Quote">'</button>
+
+                                <button class="key enter" data-key="Enter"> Enter </button>
+                            </div>
+
+                            <div class="keyboard-row">
+                                <button class="key shift" data-key="ShiftLeft"> Shift </button>
+                                <button class="key" data-key="KeyZ">Z</button>
+                                <button class="key" data-key="KeyX">X</button>
+                                <button class="key" data-key="KeyC">C</button>
+                                <button class="key" data-key="KeyV">V</button>
+                                <button class="key" data-key="KeyB">B</button>
+                                <button class="key" data-key="KeyN">N</button>
+                                <button class="key" data-key="KeyM">M</button>
+                                <button class="key" data-key="Comma">,</button>
+                                <button class="key" data-key="Period">.</button>
+                                <button class="key" data-key="Slash">/</button>
+                                <button class="key shift" data-key="ShiftRight"> Shift </button>
+                            </div>
+
+                            <div class="keyboard-row">
+                                <button class="key" data-key="ControlLeft"> Ctrl </button>
+                                <button class="key" data-key="MetaLeft"> OS </button>
+                                <button class="key" data-key="AltLeft"> Alt </button>
+                                <button class="key space" data-key="Space"> Spacebar </button>
+                                <button class="key" data-key="AltRight"> Alt </button>
+                                <button class="key" data-key="MetaRight"> OS </button>
+                                <button class="key"> Fn </button>
+                                <button class="key" data-key="ControlRight"> Ctrl </button>
+                            </div>
+                        </div>
+
+                        <div class="navigation-section">
+                            <div class="navigation-keys">
+                                <button class="key" data-key="Insert"> Ins </button>
+                                <button class="key" data-key="Home"> Home </button>
+                                <button class="key" data-key="PageUp"> PgUp </button>
+                                <button class="key" data-key="Delete"> Del </button>
+                                <button class="key" data-key="End"> End </button>
+                                <button class="key" data-key="PageDown"> PgDn </button>
+                            </div>
+
+                            <div class="arrow-area">
+                                <div></div>
+                                <button
+                                    class="key arrow up"
+                                    data-key="ArrowUp">
+                                    ↑
+                                </button>
+                                <div></div>
+
+                                <button
+                                    class="key arrow"
+                                    data-key="ArrowLeft">
+                                    ←
+                                </button>
+
+                                <button
+                                    class="key arrow"
+                                    data-key="ArrowDown">
+                                    ↓
+                                </button>
+
+                                <button
+                                    class="key arrow"
+                                    data-key="ArrowRight">
+                                    →
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="numpad">
+                            <button class="key" data-key="NumLock"> Num </button>
+                            <button class="key" data-key="NumpadDivide"> / </button>
+                            <button class="key" data-key="NumpadMultiply"> * </button>
+                            <button class="key" data-key="NumpadSubtract"> - </button>
+                            <button class="key" data-key="Numpad7">7</button>
+                            <button class="key" data-key="Numpad8">8</button>
+                            <button class="key" data-key="Numpad9">9</button>
+                            <button class="key num-tall" data-key="NumpadAdd"> + </button>
+                            <button class="key" data-key="Numpad4">4</button>
+                            <button class="key" data-key="Numpad5">5</button>
+                            <button class="key" data-key="Numpad6">6</button>
+                            <button class="key" data-key="Numpad1">1</button>
+                            <button class="key" data-key="Numpad2">2</button>
+                            <button class="key" data-key="Numpad3">3</button>
+                            <button class="key num-tall" data-key="NumpadEnter"> Enter </button>
+                            <button class="key num-zero" data-key="Numpad0"> 0 </button>
+                            <button class="key" data-key="NumpadDecimal"> . </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mouse-test">
+                    <button type="button" id="leftMouse" class="mouseB"> Left Click </button>
+                    <button type="button" id="middleMouse" class="mouseB"> Scroll Wheel </button>
+                    <button type="button" id="rightMouse" class="mouseB"> Right Click </button>
+                </div>
+
+                <button type="button" id="resetKeyboard" class="testB keyboard-reset"> Reset Test </button>
+            </div>
+        </section>
+
+        <section class="testSec" id="laptopHealth">
+            <h2 class="testTitle"> LAPTOP HEALTH CHECK </h2>
+            <div class="testCont healthCont">
+                <h3 class="subtitle"> Battery Health Status </h3>
+                <p class="testDesc">
+                    Open Command Prompt and run powercfg /batteryreport to
+                    generate a battery report. Open the report and enter the
+                    Design Capacity and Full Charge Capacity values below to
+                    calculate your battery health.
+                </p>
+
+                <div class="batteryCalc">
+                    <div class="batteryIns">
+                        <div class="inputGrp">
+                            <label for="designCapacity">
+                                Enter Design Capacity
+                            </label>
+
+                            <input
+                                type="number"
+                                id="designCapacity"
+                                placeholder="Design Capacity"
+                                min="1"
+                            >
+                        </div>
+
+                        <div class="inputGrp">
+                            <label for="fullCapacity">
+                                Enter Full Charge Capacity
+                            </label>
+
+                            <input
+                                type="number"
+                                id="fullCapacity"
+                                placeholder="Full Charge Capacity"
+                                min="0"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="batteryRestA">
+                        <button
+                            type="button"
+                            id="batteryB"
+                            class="testB">
+                            Calculate
+                        </button>
+
+                        <div
+                            id="batteryResult"
+                            class="batteryRest">
+                            <span>Results</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="note">
+                    Note: Browsers cannot read battery health information directly.
+                    A Windows battery report is required to obtain the necessary
+                    values.
+                </p>
+            </div>
+
+            <div class="testCont storageCont">
+                <h3 class="subtitle"> Storage Health Status </h3>
+                <p class="testDesc">
+                    Download and open HD Sentinel to perform a storage health scan.
+                    Review the drive's Health and Performance status, then record
+                    the results in the UAT form.
+                </p>
+
+                <a
+                    href="https://www.hdsentinel.com/download.php"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="testB storageB">
+                    Download HD Sentinel Here
+                </a>
+
+                <p class="note">
+                    Note: Browsers cannot access SMART raw health data directly.
+                    A dedicated storage diagnostic tool, such as HD Sentinel,
+                    is required to evaluate the health and performance of your
+                    storage drive.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="testSec" id="mediaC">
+            <h2 class="testTitle">
+                CAMERA, MIC & SPEAKER CHECK
+            </h2>
+
+        <div class="testCont mediaCont">
+            <h3 class="subtitle">
+                Camera Test
+            </h3>
+
+            <p class="testDesc">
+                Select a camera and click Start Camera. Allow browser access
+                and verify that the selected webcam displays a clear and
+                stable video feed.
+            </p>
+
+            <div class="camera-controls">
+                <select
+                    id="cameraSelect"
+                    class="camera-select">
+
+                    <option value="">
+                        Select Camera
+                    </option>
+
+                </select>
+
+                <button
+                    type="button"
+                    id="cameraStartB"
+                    class="testB">
+                    Start Camera
+                </button>
+
+                <button
+                    type="button"
+                    id="cameraStopB"
+                    class="testB">
+                    End Test
+                </button>
+            </div>
+
+            <div class="camera-box">
+                <video
+                    id="cameraVideo"
+                    autoplay
+                    playsinline>
+                </video>
+
+                <p id="cameraPlaceholder">
+                    Camera Preview
+                </p>
+            </div>
+            <p
+                id="cameraStatus"
+                class="media-status">
+                Select a camera to begin.
+            </p>
+        </div>
+
+        <div class="testCont mediaCont">
+            <h3 class="subtitle">
+                Mic Test
+            </h3>
+
+            <p class="testDesc">
+                Select a microphone and click Record. Speak into the selected
+                microphone and confirm that the waveform responds to your voice.
+                Stop the recording and play it back to check the audio quality.
+            </p>
+
+            <div class="mic-controls">
+                <select
+                    id="micSelect"
+                    class="mic-select">
+
+                    <option value="">
+                        Select Microphone
+                    </option>
+                </select>
+
+                <button
+                    type="button"
+                    id="micRecordB"
+                    class="testB">
+                    Record
+                </button>
+
+                <button
+                    type="button"
+                    id="micStopB"
+                    class="testB">
+                    Stop
+                </button>
+
+                <button
+                    type="button"
+                    id="micPlayB"
+                    class="testB"
+                    disabled>
+                    Play
+                </button>
+            </div>
+
+            <div class="mic-wave-box">
+                <canvas
+                    id="micWave">
+                </canvas>
+
+                <p
+                    id="micPlaceholder"
+                    class="mic-placeholder">
+                </p>
+            </div>
+
+            <p
+                id="micStatus"
+                class="media-status">
+                Select a microphone to begin.
+            </p>
+
+            <audio
+                id="micPlayback"
+                hidden>
+            </audio>
+        </div>
+
+        <div class="testCont mediaCont speakerCont">
+            <h3 class="subtitle">
+                Speaker Test
+            </h3>
+
+            <p class="testDesc">
+                Play the test audio through the left, right, or both speakers.
+                Verify that the sound is clear and coming from the selected
+                speaker. Adjust the test volume as needed.
+            </p>
+
+            <div class="media-buttons">
+                <button
+                    type="button"
+                    id="speakerLeftB"
+                    class="testB">
+                    Left
+                </button>
+
+                <button
+                    type="button"
+                    id="speakerRightB"
+                    class="testB">
+                    Right
+                </button>
+
+                <button
+                    type="button"
+                    id="speakerBothB"
+                    class="testB">
+                    Both
+                </button>
+
+                <button
+                    type="button"
+                    id="speakerStopB"
+                    class="testB">
+                    Stop
+                </button>
+            </div>
+            
+            <div class="speaker-volume">
+                <label for="speakerVolume">
+                    Volume
+                </label>
+
+                <input
+                    type="range"
+                    id="speakerVolume"
+                    min="0"
+                    max="100"
+                    value="70"
+                >
+
+                <span id="speakerVolumeValue">
+                    70%
+                </span>
+            </div>
+
+            <div class="speaker-wave-box">
+                <canvas id="speakerWave"></canvas>
+
+                <p
+                    id="speakerWavePlaceholder"
+                    class="speaker-wave-placeholder">
+                </p>
+            </div>
+
+            <p
+                id="speakerStatus"
+                class="media-status">
+                Speaker test is ready.
+            </p>
+
+            <audio
+                id="speakerAudio"
+                src="audio/loonaa.mp3"
+                preload="auto">
+            </audio>
+        </div>
+
+        </section>
+
+        </main>
+        <footer class="footer">
+            <div class="footer-left">
+                <img
+                    src="images/logo.png"
+                    alt="AssureIT logo"
+                    class="footer-logo"
+                >
+                <p>
+                    This application assists users in validating laptop hardware
+                    functionality during User Acceptance Testing.
+                </p>
+            </div>
+
+            <div class="footer-right">
+                <p>Made By R1n1803</p>
+                <p>Version 1.0 | © 2026</p>
+            </div>
+
+        </footer>
+
+        <script type="module" src="js/main.js"></script>
+        <script type="module" src="js/pixel.js"></script>
+        <script type="module" src="js/keyboard.js"></script>
+        <script type="module" src="js/health.js"></script>
+        <script type="module" src="js/media.js"></script>
+
+    </body>
+</html>

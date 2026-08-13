@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>AssureIT Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <main class="background">
+        <div class="login-card">
+            <img src="images/logo.png"
+                 alt="AssureIT logo"
+                 class="logo">
+
+            <form id="loginForm">
+                <label for="password">
+                    Enter Code
+                </label>
+
+                <input type="password"
+                        id="password"
+                        placeholder="Enter Code"
+                        autocomplete="current-password"
+                        required 
+                >
+
+                <button type="submit"
+                        id="loginButton"
+                >
+                    Log In
+                </button>
+
+                <p id="message"
+                    aria-live="polite">
+                </p>
+                
+            </form>
+        </div>
+    </main>
+
+    <script type="module" src="js/login.js"></script>
+</body>
+</html>

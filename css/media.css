@@ -1,0 +1,204 @@
+.mediaCont {
+    max-width: 760px;
+}
+
+.mediaCont + .mediaCont {
+    margin-top: 90px;
+}
+
+.media-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.media-status {
+    min-height: 18px;
+    margin-top: 15px;
+    color: #526080;
+    font-size: 12px;
+    text-align: center;
+}
+
+.camera-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+
+.camera-select {
+    min-width: 220px;
+    height: 38px;
+    padding: 0 35px 0 14px;
+    border: 2px solid #142957;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #142957;
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+}
+
+.camera-select:hover {
+    border-color: #203D7A;
+}
+
+.camera-select:focus {
+    border-color: #203D7A;
+}
+
+.camera-box {
+    width: min(700px, 100%);
+    aspect-ratio: 16 / 9;
+    position: relative;
+    margin: 30px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #E5E5E5;
+    border: 2px solid #142957;
+    border-radius: 7px;
+}
+
+
+#cameraVideo {
+    width: 100%;
+    height: 100%;
+    display: none;
+    object-fit: cover;
+    background-color: #000000;
+}
+
+
+#cameraPlaceholder {
+    position: absolute;
+    color: #79839A;
+    font-size: 14px;
+}
+
+.mic-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+
+.mic-select {
+    min-width: 230px;
+    height: 38px;
+    padding: 0 35px 0 14px;
+    border: 2px solid #142957;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #142957;
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+}
+
+.mic-select:hover,
+.mic-select:focus {
+    border-color: #203D7A;
+}
+
+.mic-wave-box {
+    width: min(600px, 100%);
+    height: 150px;
+    position: relative;
+    margin: 30px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #E5E5E5;
+    border: 2px solid #142957;
+    border-radius: 7px;
+}
+
+#micWave {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.mic-placeholder {
+    position: absolute;
+    margin: 0;
+    color: #79839A;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.speakerCont {
+    max-width: 700px;
+}
+
+.speaker-wave-box {
+    width: min(600px, 100%);
+    height: 120px;
+    position: relative;
+    margin: 30px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #E5E5E5;
+    border: 2px solid #142957;
+    border-radius: 7px;
+}
+
+#speakerWave {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.speaker-wave-placeholder {
+    position: absolute;
+    margin: 0;
+    color: #79839A;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.speaker-volume {
+    width: min(500px, 100%);
+    margin: 25px auto 0;
+    display: grid;
+    grid-template-columns:
+        auto 1fr 50px;
+    align-items: center;
+    gap: 15px;
+}
+
+.speaker-volume label {
+    color: #142957;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#speakerVolume {
+    width: 100%;
+    cursor: pointer;
+    accent-color: #142957;
+}
+
+#speakerVolumeValue {
+    color: #142957;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+}
