@@ -174,7 +174,7 @@ The AssureIT project uses three main platforms:
 |---|---|
 | GitHub | Source code storage, version control, and documentation |
 | Netlify | Website hosting and deployment |
-| Supabase | Database and access code management |
+| Supabase | Access code management |
 
 ### Project Links
 
