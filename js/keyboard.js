@@ -247,3 +247,59 @@ if (resetKeyboardButton) {
         }
     );
 }
+
+
+/* DYNAMIC KEYBOARD RESIZING */
+
+const keyboardWrap = document.querySelector(".keyboardWrap");
+const keyboardLay = document.querySelector(".keyboardLay");
+
+function resizeKeyboard() {
+    if (!keyboardWrap || !keyboardLay) return;
+
+    // Reset to original keyboard size for measurement
+    keyboardLay.style.setProperty("--key-size", "55px");
+    keyboardLay.style.setProperty("--key-gap", "7px");
+    keyboardLay.style.setProperty("--section-gap", "24px");
+
+    const availableWidth = keyboardWrap.clientWidth - 4;
+    const originalWidth = keyboardLay.scrollWidth;
+
+    if (originalWidth <= 0) return;
+
+    // Scale down only when necessary
+    const scale = Math.min(1, availableWidth / originalWidth);
+
+    const keySize = Math.max(20, 55 * scale);
+    const keyGap = 7 * (keySize / 55);
+    const sectionGap = 24 * (keySize / 55);
+
+    keyboardLay.style.setProperty(
+        "--key-size",
+        `${keySize}px`
+    );
+
+    keyboardLay.style.setProperty(
+        "--key-gap",
+        `${keyGap}px`
+    );
+
+    keyboardLay.style.setProperty(
+        "--section-gap",
+        `${sectionGap}px`
+    );
+
+    // Keep keyboard centered when it fits
+    keyboardLay.style.marginLeft = "auto";
+    keyboardLay.style.marginRight = "auto";
+}
+
+window.addEventListener("load", resizeKeyboard);
+window.addEventListener("resize", resizeKeyboard);
+
+if (keyboardWrap && typeof ResizeObserver !== "undefined") {
+    const keyboardObserver = new ResizeObserver(resizeKeyboard);
+    keyboardObserver.observe(keyboardWrap);
+}
+
+resizeKeyboard();

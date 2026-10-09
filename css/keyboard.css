@@ -1,25 +1,39 @@
+
+/* =========================
+   KEYBOARD CONTAINER
+========================= */
+
 .keyboardCont {
     width: 100%;
     max-width: 1500px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .keyboardWrap {
     width: 100%;
     margin-top: 40px;
+    padding: 10px 0 15px;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 10px 0 15px;
+    box-sizing: border-box;
 }
+
+/* =========================
+   KEY HISTORY
+========================= */
 
 .key-history-area {
     width: 100%;
     max-width: 1480px;
     margin: 35px auto 20px;
+    box-sizing: border-box;
 }
 
 .key-history-container {
     width: 100%;
     max-width: 1480px;
+    box-sizing: border-box;
 }
 
 .key-history {
@@ -47,26 +61,33 @@
     white-space: nowrap;
 }
 
+/* =========================
+   KEYBOARD LAYOUT
+========================= */
+
 .keyboardLay {
+    --key-size: 55px;
+    --key-gap: 7px;
+    --section-gap: 24px;
+
     width: max-content;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 24px;
+    gap: var(--section-gap);
     margin: 0 auto;
 }
 
 .keyboardMain {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: var(--key-gap);
 }
 
 .keyboard-row {
     display: flex;
-    gap: 7px;
-
-    height: 55px;
+    gap: var(--key-gap);
+    height: var(--key-size);
 }
 
 .function-row {
@@ -74,13 +95,17 @@
 }
 
 .function-gap {
-    width: 18px;
+    width: calc(var(--key-size) * 18 / 55);
     flex-shrink: 0;
 }
 
+/* =========================
+   KEYBOARD KEYS
+========================= */
+
 .key {
-    width: 55px;
-    height: 55px;
+    width: var(--key-size);
+    height: var(--key-size);
     flex-shrink: 0;
     border: none;
     border-radius: 7px;
@@ -88,7 +113,7 @@
     color: #122047;
     box-shadow: 0 5px 0 #B9B9B9;
     font-family: Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: clamp(8px, 0.9vw, 13px);
     font-weight: 600;
     cursor: default;
     user-select: none;
@@ -99,10 +124,18 @@
         box-shadow 0.12s ease;
 }
 
+/* =========================
+   KEY PRESSED STATE
+========================= */
+
 .key.pressed {
     transform: translateY(4px);
     box-shadow: 0 1px 0 #122047;
 }
+
+/* =========================
+   KEY CHECKED STATE
+========================= */
 
 .key.checked {
     background-color: #046199;
@@ -116,32 +149,44 @@
     box-shadow: 0 1px 0 #122047;
 }
 
+/* =========================
+   SPECIAL KEY SIZES
+========================= */
+
 .backspace {
-    width: 105px;
+    width: calc(var(--key-size) * 105 / 55);
 }
 
 .tab {
-    width: 90px;
+    width: calc(var(--key-size) * 90 / 55);
 }
 
 .caps {
-    width: 105px;
+    width: calc(var(--key-size) * 105 / 55);
 }
 
 .enter {
-    width: 119px;
+    width: calc(var(--key-size) * 119 / 55);
 }
 
 .shift {
-    width: 135px;
+    width: calc(var(--key-size) * 135 / 55);
 }
 
 .space {
-    width: 330px;
+    width: calc(var(--key-size) * 330 / 55);
 }
 
+/* =========================
+   NAVIGATION SECTION
+========================= */
+
 .navigation-section {
-    width: 179px;
+    width: calc(
+        var(--key-size) * 3 +
+        var(--key-gap) * 2
+    );
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -149,42 +194,89 @@
 
 .navigation-keys {
     display: grid;
-    grid-template-columns: repeat(3, 55px);
-    grid-template-rows: repeat(2, 55px);
-    gap: 7px;
-    margin-top: 74px;
+
+    grid-template-columns:
+        repeat(3, var(--key-size));
+
+    grid-template-rows:
+        repeat(2, var(--key-size));
+
+    gap: var(--key-gap);
+
+    margin-top: calc(
+        var(--key-size) * 74 / 55
+    );
 }
+
+/* =========================
+   ARROW KEYS
+========================= */
 
 .arrow-area {
     display: grid;
-    grid-template-columns: repeat(3, 55px);
-    grid-template-rows: repeat(2, 55px);
-    gap: 7px;
-    margin-top: 73px;
+
+    grid-template-columns:
+        repeat(3, var(--key-size));
+
+    grid-template-rows:
+        repeat(2, var(--key-size));
+
+    gap: var(--key-gap);
+
+    margin-top: calc(
+        var(--key-size) * 73 / 55
+    );
 }
 
 .arrow-area .up {
     grid-column: 2;
 }
 
+/* =========================
+   NUMPAD
+========================= */
+
 .numpad {
-    width: 241px;
+    width: calc(
+        var(--key-size) * 4 +
+        var(--key-gap) * 3
+    );
+
     display: grid;
-    grid-template-columns: repeat(4, 55px);
-    grid-auto-rows: 55px;
-    gap: 7px;
-    margin-top: 74px;
+
+    grid-template-columns:
+        repeat(4, var(--key-size));
+
+    grid-auto-rows: var(--key-size);
+
+    gap: var(--key-gap);
+
+    margin-top: calc(
+        var(--key-size) * 74 / 55
+    );
 }
 
 .num-tall {
-    height: 117px;
+    height: calc(
+        var(--key-size) * 2 +
+        var(--key-gap)
+    );
+
     grid-row: span 2;
 }
 
 .num-zero {
-    width: 117px;
+    width: calc(
+        var(--key-size) * 2 +
+        var(--key-gap)
+    );
+
     grid-column: span 2;
 }
+
+/* =========================
+   MOUSE TEST CONTAINER
+========================= */
 
 .mouse-test {
     display: flex;
@@ -195,18 +287,29 @@
     margin-top: 45px;
 }
 
+/* =========================
+   MOUSE BUTTONS
+========================= */
+
 .mouseB {
-    width: 180px;
-    height: 65px;
+    width: clamp(130px, 13vw, 180px);
+    height: clamp(52px, 5vw, 65px);
+
     border: none;
     border-radius: 8px;
+
+    background-color: #DADADA;
     color: #142957;
+
     box-shadow: 0 5px 0 #B9B9B9;
+
     font-family: Helvetica, sans-serif;
     font-size: 14px;
     font-weight: 600;
+
     cursor: default;
     user-select: none;
+
     transition:
         background-color 0.15s ease,
         color 0.15s ease,
@@ -214,58 +317,222 @@
         box-shadow 0.15s ease;
 }
 
+/* =========================
+   MOUSE ACTIVE STATE
+========================= */
+
 .mouseB.active {
     background-color: #1C3667;
     color: #dadada;
+
     transform: translateY(4px);
+
     box-shadow: 0 1px 0 #122047;
 }
+
+/* =========================
+   MOUSE CHECKED STATE
+========================= */
 
 .mouseB.checked {
     background-color: #046199;
     color: #dadada;
+
     box-shadow: 0 5px 0 #1C3667;
 }
 
 .mouseB.checked.active {
     background-color: #1C3667;
     color: #dadada;
+
+    transform: translateY(4px);
+
     box-shadow: 0 1px 0 #122047;
 }
+
+/* =========================
+   RESET BUTTON
+========================= */
 
 .keyboard-reset {
     display: block;
     margin: 35px auto 0;
 }
 
-@media (max-width: 1200px) {
-    .keyboard-wrapper {
-        justify-content: flex-start;
+/* =========================
+   RESPONSIVE DESKTOP
+   1400px AND BELOW
+========================= */
+
+@media (max-width: 1400px) {
+
+    .keyboardLay {
+        --key-size: 48px;
+        --key-gap: 6px;
+        --section-gap: 18px;
+    }
+
+    .keyboardWrap {
+        margin-top: 35px;
     }
 
 }
 
-@media (max-width: 760px) {
-    .keyboard-wrapper {
+/* =========================
+   RESPONSIVE LAPTOP
+   1150px AND BELOW
+========================= */
+
+@media (max-width: 1150px) {
+
+    .keyboardLay {
+        --key-size: 40px;
+        --key-gap: 5px;
+        --section-gap: 12px;
+    }
+
+    .keyboardWrap {
         margin-top: 30px;
     }
 
-    .mouseB {
-        width: 150px;
-        height: 58px;
+    .key {
+        font-size: 11px;
     }
+
+    .mouse-test {
+        margin-top: 35px;
+    }
+
 }
 
+/* =========================
+   RESPONSIVE TABLET
+   900px AND BELOW
+========================= */
 
-@media (max-width: 480px) {
+@media (max-width: 900px) {
+
+    .keyboardLay {
+        --key-size: 33px;
+        --key-gap: 4px;
+        --section-gap: 8px;
+    }
+
+    .key {
+        font-size: 9px;
+        border-radius: 5px;
+        box-shadow: 0 3px 0 #B9B9B9;
+    }
+
+    .key.checked {
+        box-shadow: 0 3px 0 #1C3667;
+    }
+
+    .key.pressed,
+    .key.checked.pressed {
+        transform: translateY(2px);
+        box-shadow: 0 1px 0 #122047;
+    }
+
+    .mouseB {
+        font-size: 13px;
+    }
+
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+   600px AND BELOW
+========================= */
+
+@media (max-width: 600px) {
+
+    .keyboardCont {
+        width: 100%;
+    }
+
+    .keyboardWrap {
+        margin-top: 25px;
+        padding: 10px 0 15px;
+    }
+
+    .keyboardLay {
+        --key-size: 28px;
+        --key-gap: 3px;
+        --section-gap: 6px;
+    }
+
+    .key {
+        font-size: 8px;
+        border-radius: 4px;
+    }
+
+    .key-history-area {
+        margin-top: 25px;
+    }
+
+    .history-key {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
     .mouse-test {
         gap: 12px;
+        margin-top: 30px;
     }
 
     .mouseB {
         width: 130px;
         height: 52px;
         font-size: 12px;
+    }
+
+    .keyboard-reset {
+        margin-top: 25px;
+    }
+
+}
+
+/* =========================
+   VERY SMALL SCREENS
+   480px AND BELOW
+========================= */
+
+@media (max-width: 480px) {
+
+    .keyboardWrap {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .keyboardLay {
+        --key-size: 24px;
+        --key-gap: 3px;
+        --section-gap: 5px;
+    }
+
+    .key {
+        font-size: 7px;
+    }
+
+    .mouse-test {
+        gap: 10px;
+    }
+
+    .mouseB {
+        width: 120px;
+        height: 48px;
+        font-size: 11px;
+    }
+
+    .key-history {
+        gap: 6px;
+        padding: 6px 10px;
+    }
+
+    .history-key {
+        padding: 5px 8px;
+        font-size: 10px;
     }
 
 }
