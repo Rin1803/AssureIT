@@ -1232,7 +1232,6 @@ if (speakerStopB) {
 }
 
 if (speakerAudio) {
-
     speakerAudio.addEventListener(
         "ended",
         function () {
@@ -1254,3 +1253,450 @@ if (speakerAudio) {
     );
 }
 drawEmptySpeakerWave();
+const speakerAudio2 =
+    document.getElementById("speakerAudio2");
+
+const speakerLeftB2 =
+    document.getElementById("speakerLeftB2");
+
+const speakerRightB2 =
+    document.getElementById("speakerRightB2");
+
+const speakerBothB2 =
+    document.getElementById("speakerBothB2");
+
+const speakerStopB2 =
+    document.getElementById("speakerStopB2");
+
+const speakerStatus2 =
+    document.getElementById("speakerStatus2");
+
+const speakerVolume2 =
+    document.getElementById("speakerVolume2");
+
+const speakerVolumeValue2 =
+    document.getElementById("speakerVolumeValue2");
+
+const speakerWave2 =
+    document.getElementById("speakerWave2");
+
+const speakerWavePlaceholder2 =
+    document.getElementById(
+        "speakerWavePlaceholder2"
+    );
+
+let speakerAudioContext2 = null;
+let speakerSource2 = null;
+let speakerPanner2 = null;
+let speakerAnalyser2 = null;
+let speakerGain2 = null;
+let speakerAnimationFrame2 = null;
+
+function drawEmptySpeakerWave2() {
+    if (!speakerWave2) {
+        return;
+    }
+
+    const canvas =
+        speakerWave2;
+
+    const ctx =
+        canvas.getContext("2d");
+
+    const dpr =
+        window.devicePixelRatio || 1;
+
+
+    canvas.width =
+        canvas.clientWidth * dpr;
+
+    canvas.height =
+        canvas.clientHeight * dpr;
+
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+    const width =
+        canvas.clientWidth;
+
+    const height =
+        canvas.clientHeight;
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+    ctx.beginPath();
+    ctx.moveTo(
+        15,
+        height / 2
+    );
+
+    ctx.lineTo(
+        width - 15,
+        height / 2
+    );
+
+    ctx.strokeStyle =
+        "#8EA6D0";
+
+    ctx.lineWidth =
+        2;
+
+    ctx.stroke();
+}
+
+function initializeSpeakerAudio2() {
+
+    if (speakerAudioContext2) {
+        return;
+    }
+
+    const AudioContextClass =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    speakerAudioContext2 =
+        new AudioContextClass();
+
+    speakerSource2 =
+        speakerAudioContext2
+            .createMediaElementSource(
+                speakerAudio2
+            );
+
+    speakerPanner2 =
+        speakerAudioContext2
+            .createStereoPanner();
+
+    speakerGain2 =
+        speakerAudioContext2
+            .createGain();
+
+    speakerAnalyser2 =
+        speakerAudioContext2
+            .createAnalyser();
+
+    speakerAnalyser2.fftSize =
+        2048;
+
+    speakerSource2.connect(
+        speakerPanner2
+    );
+
+    speakerPanner2.connect(
+        speakerGain2
+    );
+
+    speakerGain2.connect(
+        speakerAnalyser2
+    );
+
+    speakerAnalyser2.connect(
+        speakerAudioContext2.destination
+    );
+
+    speakerGain2.gain.value =
+        Number(
+            speakerVolume2.value
+        ) / 100;
+}
+
+function startSpeakerWaveform2() {
+    if (!speakerAnalyser2) {
+        return;
+    }
+
+    if (speakerAnimationFrame2) {
+        cancelAnimationFrame(
+            speakerAnimationFrame2
+        );
+    }
+
+    const canvas =
+        speakerWave2;
+
+    const ctx =
+        canvas.getContext("2d");
+
+    const dpr =
+        window.devicePixelRatio || 1;
+
+    canvas.width =
+        canvas.clientWidth * dpr;
+
+    canvas.height =
+        canvas.clientHeight * dpr;
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+    const bufferLength =
+        speakerAnalyser2.fftSize;
+
+    const dataArray =
+        new Uint8Array(
+            bufferLength
+        );
+
+    function draw() {
+        speakerAnimationFrame2 =
+            requestAnimationFrame(
+                draw
+            );
+
+        speakerAnalyser2
+            .getByteTimeDomainData(
+                dataArray
+            );
+
+        const width =
+            canvas.clientWidth;
+
+        const height =
+            canvas.clientHeight;
+
+        ctx.clearRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+        ctx.beginPath();
+        ctx.moveTo(
+            0,
+            height / 2
+        );
+        ctx.lineTo(
+            width,
+            height / 2
+        );
+        ctx.strokeStyle =
+            "#C4CAD6";
+
+        ctx.lineWidth =
+            1;
+        ctx.stroke();
+        ctx.beginPath();
+        const sliceWidth =
+            width / bufferLength;
+
+        let x = 0;
+
+        for (
+            let i = 0;
+            i < bufferLength;
+            i++
+        ) {
+            const value =
+                dataArray[i] / 128;
+            const y =
+                value * height / 2;
+
+            if (i === 0) {
+                ctx.moveTo(
+                    x,
+                    y
+                );
+            } else {
+                ctx.lineTo(
+                    x,
+                    y
+                );
+            }
+            x += sliceWidth;
+        }
+
+        ctx.strokeStyle =
+            "#142957";
+        ctx.lineWidth =
+            2;
+        ctx.stroke();
+    }
+    draw();
+}
+
+function stopSpeakerWaveform2() {
+    if (speakerAnimationFrame2) {
+        cancelAnimationFrame(
+            speakerAnimationFrame2
+        );
+
+        speakerAnimationFrame2 =
+            null;
+    }
+    drawEmptySpeakerWave2();
+}
+
+async function playSpeakerTest2(
+    pan,
+    side
+) {
+    try {
+        initializeSpeakerAudio2();
+        if (
+            speakerAudioContext2.state ===
+            "suspended"
+        ) {
+
+            await speakerAudioContext2
+                .resume();
+        }
+        speakerPanner2.pan.value =
+            pan;
+        speakerAudio2.pause();
+        speakerAudio2.currentTime =
+            0;
+
+        if (speakerWavePlaceholder2) {
+            speakerWavePlaceholder2
+                .style.display =
+                "none";
+        }
+        await speakerAudio2.play();
+        startSpeakerWaveform2();
+
+        if (side === "left") {
+            speakerStatus2.textContent =
+                "Playing through the left speaker.";
+        }
+
+        else if (side === "right") {
+            speakerStatus2.textContent =
+                "Playing through the right speaker.";
+        }
+
+        else {
+            speakerStatus2.textContent =
+                "Playing through both speakers.";
+        }
+    }
+    catch (error) {
+        console.error(
+            "Speaker test 2 error:",
+            error
+        );
+        speakerStatus2.textContent =
+            "Unable to play the speaker test audio.";
+    }
+}
+
+if (speakerLeftB2) {
+    speakerLeftB2.addEventListener(
+        "click",
+        function () {
+            playSpeakerTest2(
+                -1,
+                "left"
+            );
+        }
+    );
+}
+
+if (speakerRightB2) {
+    speakerRightB2.addEventListener(
+        "click",
+        function () {
+            playSpeakerTest2(
+                1,
+                "right"
+            );
+        }
+    );
+}
+
+if (speakerBothB2) {
+    speakerBothB2.addEventListener(
+        "click",
+        function () {
+            playSpeakerTest2(
+                0,
+                "both"
+            );
+        }
+    );
+}
+
+if (speakerVolume2) {
+    speakerVolume2.addEventListener(
+        "input",
+        function () {
+            const volume =
+                Number(
+                    speakerVolume2.value
+                );
+            speakerVolumeValue2
+                .textContent =
+                `${volume}%`;
+
+            if (speakerGain2) {
+                speakerGain2.gain.value =
+                    volume / 100;
+            }
+        }
+    );
+}
+
+function stopSpeakerTest2() {
+    if (!speakerAudio2) {
+        return;
+    }
+
+    speakerAudio2.pause();
+    speakerAudio2.currentTime =
+        0;
+    stopSpeakerWaveform2();
+
+    if (speakerWavePlaceholder2) {
+        speakerWavePlaceholder2
+            .style.display =
+            "block";
+    }
+
+    speakerStatus2.textContent =
+        "Speaker test stopped.";
+}
+
+if (speakerStopB2) {
+    speakerStopB2.addEventListener(
+        "click",
+        stopSpeakerTest2
+    );
+}
+
+if (speakerAudio2) {
+    speakerAudio2.addEventListener(
+        "ended",
+        function () {
+            stopSpeakerWaveform2();
+            if (
+                speakerWavePlaceholder2
+            ) {
+                speakerWavePlaceholder2
+                    .style.display =
+                    "block";
+            }
+            speakerStatus2.textContent =
+                "Speaker test complete.";
+        }
+    );
+}
+
+drawEmptySpeakerWave2();

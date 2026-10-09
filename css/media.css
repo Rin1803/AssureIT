@@ -202,3 +202,25 @@
     font-weight: 600;
     text-align: right;
 }
+.speaker-second {
+    margin-top: 40px;
+}
+
+#speakerWave2 {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#speakerVolume2 {
+    width: 100%;
+    cursor: pointer;
+    accent-color: #142957;
+}
+
+#speakerVolumeValue2 {
+    color: #142957;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+}

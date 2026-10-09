@@ -1,53 +1,3 @@
-document.addEventListener(
-    "keydown",
-    function (event) {
-        if (
-            !pixelTestScreen.classList.contains(
-                "active"
-            )
-        ) {
-            return;
-        }
-
-        if (
-            event.key === "ArrowRight" ||
-            event.key === " "
-        ) {
-            event.preventDefault();
-            currentColorIndex =
-                (
-                    currentColorIndex + 1
-                ) % pixelColors.length;
-            pixelTestScreen.style.backgroundColor =
-                pixelColors[currentColorIndex];
-
-        }
-
-        if (event.key === "ArrowLeft") {
-            event.preventDefault();
-            currentColorIndex =
-                (
-                    currentColorIndex
-                    - 1
-                    + pixelColors.length
-                ) % pixelColors.length;
-            pixelTestScreen.style.backgroundColor =
-                pixelColors[currentColorIndex];
-        }
-    }
-);
-
-document.addEventListener(
-    "fullscreenchange",
-    function () {
-        if (!document.fullscreenElement) {
-            pixelTestScreen.classList.remove(
-                "active"
-            );
-        }
-    }
-);
-
 const keyboard =
     document.getElementById("keyboard");
 
@@ -63,6 +13,37 @@ const middleMouse =
 const rightMouse =
     document.getElementById("rightMouse");
 
+const keyHistory =
+    document.getElementById("keyHistory");
+
+function addKeyHistory(key) {
+
+    if (!keyHistory || !key) {
+        return;
+    }
+
+    const historyKey =
+        document.createElement("span");
+
+    historyKey.className =
+        "history-key";
+
+    historyKey.textContent =
+        key.textContent.trim();
+
+    keyHistory.prepend(
+        historyKey
+    );
+
+    while (
+        keyHistory.children.length > 30
+    ) {
+        keyHistory.removeChild(
+            keyHistory.lastElementChild
+        );
+    }
+}
+
 document.addEventListener(
     "keydown",
     function (event) {
@@ -72,6 +53,10 @@ document.addEventListener(
         if (!keyboard) {
             return;
         }
+        if (event.repeat) {
+            return;
+        }
+
         const key =
             keyboard.querySelector(
                 `[data-key="${event.code}"]`
@@ -79,9 +64,15 @@ document.addEventListener(
         if (!key) {
             return;
         }
-        key.classList.add("pressed");
-        key.classList.add("checked");
-
+        key.classList.add(
+            "pressed"
+        );
+        key.classList.add(
+            "checked"
+        );
+        addKeyHistory(
+            key
+        );
     }
 );
 
@@ -91,55 +82,82 @@ document.addEventListener(
         if (!keyboard) {
             return;
         }
+
         const key =
             keyboard.querySelector(
                 `[data-key="${event.code}"]`
             );
+
         if (!key) {
             return;
         }
-        key.classList.remove("pressed");
+        key.classList.remove(
+            "pressed"
+        );
     }
 );
 
 document.addEventListener(
     "mousedown",
     function (event) {
-        let mouseButton = null;
+        let mouseButton =
+            null;
+
         if (event.button === 0) {
-            mouseButton = leftMouse;
+            mouseButton =
+                leftMouse;
         }
+
         else if (event.button === 1) {
-            mouseButton = middleMouse;
+            mouseButton =
+                middleMouse;
         }
+
         else if (event.button === 2) {
-            mouseButton = rightMouse;
+            mouseButton =
+                rightMouse;
+
         }
         if (!mouseButton) {
             return;
         }
-        mouseButton.classList.add("active");
-        mouseButton.classList.add("checked");
+        mouseButton.classList.add(
+            "active"
+        );
+        mouseButton.classList.add(
+            "checked"
+        );
     }
 );
 
 document.addEventListener(
     "mouseup",
     function (event) {
-        let mouseButton = null;
+        let mouseButton =
+            null;
+
         if (event.button === 0) {
-            mouseButton = leftMouse;
+            mouseButton =
+                leftMouse;
         }
+
         else if (event.button === 1) {
-            mouseButton = middleMouse;
+            mouseButton =
+                middleMouse;
+
         }
         else if (event.button === 2) {
-            mouseButton = rightMouse;
+            mouseButton =
+                rightMouse;
+
         }
         if (!mouseButton) {
             return;
         }
-        mouseButton.classList.remove("active");
+
+        mouseButton.classList.remove(
+            "active"
+        );
     }
 );
 
@@ -149,8 +167,13 @@ document.addEventListener(
         if (!middleMouse) {
             return;
         }
-        middleMouse.classList.add("checked");
-        middleMouse.classList.add("active");
+        middleMouse.classList.add(
+            "checked"
+        );
+        middleMouse.classList.add(
+            "active"
+        );
+
         setTimeout(
             function () {
                 middleMouse.classList.remove(
@@ -166,7 +189,9 @@ document.addEventListener(
 );
 
 const keyboardSection =
-    document.getElementById("keyboardC");
+    document.getElementById(
+        "keyboardC"
+    );
 
 if (keyboardSection) {
     keyboardSection.addEventListener(
@@ -175,7 +200,6 @@ if (keyboardSection) {
             event.preventDefault();
         }
     );
-
 }
 
 if (resetKeyboardButton) {
@@ -196,23 +220,30 @@ if (resetKeyboardButton) {
                     }
                 );
             }
+
             const mouseButtons = [
                 leftMouse,
                 middleMouse,
                 rightMouse
             ];
+
             mouseButtons.forEach(
                 function (button) {
                     if (!button) {
                         return;
                     }
+
                     button.classList.remove(
                         "active",
                         "checked"
                     );
                 }
             );
+            if (keyHistory) {
+                keyHistory.innerHTML =
+                    "";
+
+            }
         }
     );
-
 }

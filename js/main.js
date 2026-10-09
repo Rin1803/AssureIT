@@ -65,3 +65,86 @@ if (logoutButton) {
     );
 }
 protectPage();
+
+const cheatSheetButton =
+    document.getElementById("cheatSheetB");
+
+const cheatSheetModal =
+    document.getElementById("cheatSheetModal");
+
+const closeCheatSheet =
+    document.getElementById("closeCheatSheet");
+
+
+function openCheatSheet() {
+    if (!cheatSheetModal) {
+        return;
+    }
+
+    cheatSheetModal.classList.add(
+        "active"
+    );
+
+    cheatSheetModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+}
+
+function closeCheatSheetModal() {
+    if (!cheatSheetModal) {
+        return;
+    }
+    cheatSheetModal.classList.remove(
+        "active"
+    );
+    cheatSheetModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+}
+
+
+if (cheatSheetButton) {
+    cheatSheetButton.addEventListener(
+        "click",
+        openCheatSheet
+    );
+}
+
+
+if (closeCheatSheet) {
+    closeCheatSheet.addEventListener(
+        "click",
+        closeCheatSheetModal
+    );
+}
+
+if (cheatSheetModal) {
+    cheatSheetModal.addEventListener(
+        "click",
+        function (event) {
+            if (
+                event.target ===
+                cheatSheetModal
+            ) {
+                closeCheatSheetModal();
+            }
+        }
+    );
+}
+document.addEventListener(
+    "keydown",
+    function (event) {
+        if (
+            event.key === "Escape" &&
+            cheatSheetModal &&
+            cheatSheetModal.classList.contains(
+                "active"
+            )
+        ) {
+            closeCheatSheetModal();
+        }
+
+    }
+);

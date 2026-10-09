@@ -16,6 +16,15 @@
     <body>
         <header class="header">
             <img src="images/logo2.png" alt="AssureIT logo" class="header-logo">
+            <button
+                type="button"
+                id="cheatSheetB"
+                class="header-icon-button"
+                aria-label="Open keyboard shortcut cheat sheet"
+            >
+                📖
+            </button>
+
             <button type="button" id="logoutb" class="logout-button">
                 ←
             </button>
@@ -69,6 +78,16 @@
                 </p>
 
                 <div class="keyboardWrap">
+                    <div class="key-history-area">
+                        <div class="key-history-header">
+                        </div>
+                        <div
+                            id="keyHistory"
+                            class="key-history"
+                            aria-live="polite">
+                        </div>
+                    </div>
+                    
                     <div class="keyboardLay">
                         <div class="keyboardMain" id="keyboard">
                             <div class="keyboard-row function-row">
@@ -538,13 +557,83 @@
 
             <audio
                 id="speakerAudio"
-                src="audio/loonaa.mp3"
+                src="audio/Elevator Music.mp3"
                 preload="auto">
             </audio>
+            <div class="speaker-second">
+                <div class="media-buttons">
+                    <button
+                        type="button"
+                        id="speakerLeftB2"
+                        class="testB">
+                        Left
+                    </button>
+
+                    <button
+                        type="button"
+                        id="speakerRightB2"
+                        class="testB">
+                        Right
+                    </button>
+
+                    <button
+                        type="button"
+                        id="speakerBothB2"
+                        class="testB">
+                        Both
+                    </button>
+
+                    <button
+                        type="button"
+                        id="speakerStopB2"
+                        class="testB">
+                        Stop
+                    </button>
+                </div>
+
+                <div class="speaker-volume">
+                    <label for="speakerVolume2">
+                        Volume
+                    </label>
+
+                    <input
+                        type="range"
+                        id="speakerVolume2"
+                        min="0"
+                        max="100"
+                        value="70"
+                    >
+
+                    <span id="speakerVolumeValue2">
+                        70%
+                    </span>
+                </div>
+
+                <div class="speaker-wave-box">
+                    <canvas id="speakerWave2"></canvas>
+
+                    <p
+                        id="speakerWavePlaceholder2"
+                        class="speaker-wave-placeholder">
+                    </p>
+                </div>
+
+                <p
+                    id="speakerStatus2"
+                    class="media-status">
+                    Speaker test is ready.
+                </p>
+
+                <audio
+                    id="speakerAudio2"
+                    src="audio/tedtalk.mp3"
+                    preload="auto">
+                </audio>
+            </div>
         </div>
 
         </section>
-
+        
         </main>
         <footer class="footer">
             <div class="footer-left">
@@ -557,20 +646,121 @@
                     This application assists users in validating laptop hardware
                     functionality during User Acceptance Testing.
                 </p>
+                </div>
             </div>
 
             <div class="footer-right">
-                <p>Made By R1n1803</p>
+                <p>Made By Karrin Frida Novero</p>
                 <p>Version 1.0 | © 2026</p>
             </div>
 
         </footer>
 
+        <div
+            id="cheatSheetModal"
+            class="cheat-modal"
+            aria-hidden="true"
+        >
+            <div class="cheat-modal-box">
+                <button
+                    type="button"
+                    id="closeCheatSheet"
+                    class="cheat-close"
+                    aria-label="Close cheat sheet"
+                >
+                    ×
+                </button>
+                <h2>Keyboard Shortcut Cheat Sheet</h2>
+                <p class="cheat-desc">
+                    Use these shortcuts to verify that keyboard combinations
+                    are working correctly.
+                </p>
+                <div class="cheat-list">
+                    <div class="cheat-item">
+                        <div class="cheat-keys">
+                            <span class="cheat-key">Win</span>
+                            <span>+</span>
+                            <span class="cheat-key">E</span>
+                        </div>
+                        <span>Open File Explorer</span>
+                    </div>
+                    <div class="cheat-item">
+                        <div class="cheat-keys">
+                            <span class="cheat-key">Win</span>
+                            <span>+</span>
+                            <span class="cheat-key">R</span>
+                        </div>
+                        <span>Open Run</span>
+                    </div>
+                    <div class="cheat-item">
+                        <div class="cheat-keys">
+                            <span class="cheat-key">Ctrl</span>
+                            <span>+</span>
+                            <span class="cheat-key">Shift</span>
+                            <span>+</span>
+                            <span class="cheat-key">Esc</span>
+                        </div>
+                        <span>Open Task Manager</span>
+                    </div>
+                    <div class="cheat-item">
+                        <div class="cheat-keys">
+                            <span class="cheat-key">Win</span>
+                            <span>+</span>
+                            <span class="cheat-key">I</span>
+                        </div>
+                        <span>Open Settings</span>
+                    </div>
+                    <div class="cheat-item">
+                        <div class="cheat-keys">
+                            <span class="cheat-key">Win</span>
+                            <span>+</span>
+                            <span class="cheat-key">R</span>
+                        </div>
+                        <span>Open Run</span>
+                    </div>
+                    <div class="cheat-item">
+                        <div class="cheat-keys">
+                            <span class="cheat-key">Win</span>
+                            <span>+</span>
+                            <span class="cheat-key">R</span>
+                            <span>→</span>
+                            <span class="cheat-key">cmd</span>
+                            <span>→</span>
+                            <span class="cheat-key">Enter</span>
+                        </div>
+                        <span>Open Command Prompt</span>
+                    </div>
+                    <div class="cheat-item">
+                        <div class="cheat-keys">
+                            <span class="cheat-key">Alt</span>
+                            <span>+</span>
+                            <span class="cheat-key">Tab</span>
+                        </div>
+                        <span>Switch Applications</span>
+                    </div>
+                    <div class="cheat-item">
+                        <div class="cheat-keys">
+                            <span class="cheat-key">Win</span>
+                            <span>+</span>
+                            <span class="cheat-key">D</span>
+                        </div>
+                        <span>Show Desktop</span>
+                    </div>
+                    <div class="cheat-item">
+                        <div class="cheat-keys">
+                            <span class="cheat-key">Win</span>
+                            <span>+</span>
+                            <span class="cheat-key">L</span>
+                        </div>
+                        <span>Lock PC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script type="module" src="js/main.js"></script>
         <script type="module" src="js/pixel.js"></script>
         <script type="module" src="js/keyboard.js"></script>
         <script type="module" src="js/health.js"></script>
         <script type="module" src="js/media.js"></script>
-
     </body>
 </html>

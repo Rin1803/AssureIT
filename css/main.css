@@ -210,3 +210,106 @@ main {
 .footer-right p:first-child {
     margin-bottom: 6px;
 }
+
+.header-icon-button {
+    width: 48px;
+    height: 48px;
+    margin-left: auto;
+    margin-right: 12px;
+    border: 2px solid #DADADA;
+    border-radius: 8px;
+    background-color: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-icon-button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.cheat-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.cheat-modal.active {
+    display: flex;
+}
+
+.cheat-modal-box {
+    width: min(700px, 100%);
+    max-height: 80vh;
+    position: relative;
+    overflow-y: auto;
+    padding: 35px;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    color: #142957;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+}
+
+.cheat-modal-box h2 {
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.cheat-desc {
+    margin-bottom: 30px;
+    text-align: center;
+    color: #526080;
+}
+
+.cheat-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    border: none;
+    background: transparent;
+    color: #142957;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.cheat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cheat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    background-color: #F7F8FA;
+}
+
+.cheat-keys {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.cheat-key {
+    min-width: 34px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    background-color: #046199;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+}
